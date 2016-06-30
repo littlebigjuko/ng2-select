@@ -18,6 +18,5 @@ webpack.config.js
 #typescript sources
 *.js.map
 !*.d.ts
-/components/**/*.ts
 !/components/**/*.d.ts
 
