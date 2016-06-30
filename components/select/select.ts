@@ -116,6 +116,7 @@ let optionsTemplate = `
   selector: 'ng-select',
   directives: [OffClickDirective],
   pipes: [HighlightPipe],
+   host: { '(document:click)': 'checkOutsideClicked($event)'},
   styles: [styles],
   template: `
   <div tabindex="0"
@@ -246,6 +247,12 @@ export class SelectComponent implements OnInit {
   public get active():Array<any> {
     return this._active;
   }
+
+   private checkOutsideClicked(event) {		
+ 		if(event.target !== this.element.nativeElement && !this.element.nativeElement.contains(event.target) && this.optionsOpened) {
+ 			this.hideOptions();
+ 		}
+ 	}
 
   private inputMode:boolean = false;
   private optionsOpened:boolean = false;
